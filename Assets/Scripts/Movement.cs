@@ -7,25 +7,26 @@ using UnityEngine.Timeline;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float Mspeed = 20f;
-    [SerializeField] float jumpForce = 2f;
+    [SerializeField] float jumpForce = 10f;
     Rigidbody rbody;
     float horizontalInput;
     float forwardlInput;
     public bool isGrounded = true;
     public bool isAirborne = false;
 
-  
+    
 
 
     private void Start()
     {
         rbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     RaycastHit hit;
     TimelinePlayer Director;
-    
 
+    AudioSource audioSource;
 
 
     void Update()
@@ -44,6 +45,7 @@ public class Movement : MonoBehaviour
             rbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             isAirborne = true;
+            audioSource.Play();
 
         }
 

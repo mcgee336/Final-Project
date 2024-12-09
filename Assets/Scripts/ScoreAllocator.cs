@@ -8,9 +8,11 @@ public class NewBehaviourScript : MonoBehaviour
 
     private ScoreControl _scoreController;
 
+
     private void Awake()
     {
         _scoreController = FindFirstObjectByType<ScoreControl>();
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -18,7 +20,6 @@ public class NewBehaviourScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             AllocateScore();
-            Debug.Log("Got Score");
             Destroy(gameObject);
         }
     }
